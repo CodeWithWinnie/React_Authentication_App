@@ -15,10 +15,12 @@ const Signup = () => {
             return;
          }
         try {
-            const response = await register(username, email, password);
+            const response = await register({username, email, password});
+            console.log(response);
             alert("Signup Successful!");
+            window.location('/login')
         } catch (error) {
-            alert("Signup failed! Please check your details.");
+            alert("Signup failed! Please check your details.", error);
         }
     }
 

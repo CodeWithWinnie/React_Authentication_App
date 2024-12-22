@@ -40,8 +40,6 @@ const AuthProvider = ({children}) => {
       logout,
       login,
       register,
-     
-    
    }
 
   return (

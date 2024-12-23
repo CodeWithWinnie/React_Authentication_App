@@ -10,14 +10,17 @@ const Signup = () => {
     const {register} = useAuth()
 
     const handleRegister = async() => {
-        if (password != repeatpassword) {
-            alert("Password does not match! Retype password.");
-        }
+         if (password !== repeatpassword) {
+            alert("Passwords do not match.");
+            return;
+         }
         try {
-            const response = await register(username, email, password);
+            const response = await register({username, email, password});
+            console.log(response);
             alert("Signup Successful!");
+            window.location('/login')
         } catch (error) {
-            alert("Signup failed! Please check your details.");
+            alert("Signup failed! Please check your details.", error);
         }
     }
 

@@ -9,10 +9,11 @@ const Login = () => {
 
     const handleLogin = async() => {
         try {
-            const response = await login(email, password);
+            const response = await login({email, password});
+            console.log(response)
             alert("Login Successful!");
         } catch (error) {
-            alert("Login failed! Please check your details.");
+            alert("Login failed! Please check your details.",error);
         }
     }
 

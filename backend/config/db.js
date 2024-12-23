@@ -18,7 +18,7 @@ con.connect((err) => {
 
 con.query(
    `CREATE TABLE IF NOT EXISTS users(
-   id INT AUTO_INCREMENT PRIMARY_KEY,
+   id INT AUTO_INCREMENT PRIMARY KEY,
    username VARCHAR(50) NOT NULL,
    email VARCHAR(255) NOT NULL UNIQUE,
    password VARCHAR(30) NOT NULL
@@ -26,6 +26,8 @@ con.query(
    `, (err) => {
       if(err){
          console.error('unable to create users table', err)
+      } else {
+         console.log('user table ready')
       }
    }
 )

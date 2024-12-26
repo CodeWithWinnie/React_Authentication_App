@@ -12,6 +12,7 @@ const Login = () => {
             const response = await login({email, password});
             console.log(response)
             alert("Login Successful!");
+            window.location('/')
         } catch (error) {
             alert("Login failed! Please check your details.",error);
         }

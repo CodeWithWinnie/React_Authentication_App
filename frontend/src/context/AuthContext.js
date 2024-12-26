@@ -14,8 +14,8 @@ const AuthProvider = ({children}) => {
 
    const register  = async (cred) => {
       const {data} = await axios.post(`${BKEP}/api/auth/register`, cred)
-      setUser(data.user)
-      localStorage.setItem('user_id', data.user._id);
+      setUser(data.result)
+      localStorage.setItem('user_id', data.result?.id)
       return data
       // localStorage.setItem('user_id', data.user?.user_id)
    }
@@ -24,10 +24,8 @@ const AuthProvider = ({children}) => {
 
    const login = async (cred) => {
       const {data} = await axios.post(`${BKEP}/api/auth/login`, cred)
-      setUser(data.user)
-      localStorage.setItem('user_id', data.user?._id)
+      setUser(data.result)
       return data
-      // localStorage.setItem('user_id', data.user?.user_id)
    }
 
    const logout = async () => {

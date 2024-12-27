@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const router = require('./routes/index')
 const app = express()
-
+const cors = require('cors');
 app.use(cors({
     origin: 'http://localhost:3000', // Frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods

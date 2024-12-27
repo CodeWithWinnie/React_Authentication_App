@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../index.css";
-import { useAuth } from "../context/AuthContext";
+import {AuthContext } from "../context/AuthContext";
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const {login} = useAuth()
+    const {login } = useContext(AuthContext)
 
     const handleLogin = async() => {
         try {

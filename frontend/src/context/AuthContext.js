@@ -12,23 +12,25 @@ const AuthProvider = ({children}) => {
 
    
 
-   const register  = async (username, email, password ) => {
-      const response = await axios.post(`${BKEP}/api/auth/register`, {username, email, password } )
-      setUser(response.data.result)
-      localStorage.setItem('user_id', response.data.result?.id)
-      return response.data.result
+   const register  = async (cred) => {
+      const {data} = await axios.post(`${BKEP}/api/auth/register`, cred)
+      setUser(data.result)
+      localStorage.setItem('user_id', data.result?.id)
+      return data
       // localStorage.setItem('user_id', data.user?.user_id)
    }
 
    
 
-   const login = async (email, password) => {
-      const response = await axios.post(`${BKEP}/api/auth/login`, {email, password } )
-      setUser(response.data.result)
-      return response.data.result
+   const login = async (cred) => {
+      const {data} = await axios.post(`${BKEP}/api/auth/login`, cred)
+      setUser(data.result)
+      localStorage.setItem('user_id', data.result[0].id)
+      return data
    }
 
    const logout = async () => {
+      await axios.post(`${BKEP}/api/auth/logout`)
       setUser(null)
    }
 

@@ -4,7 +4,11 @@ const express = require('express')
 const router = require('./routes/index')
 const app = express()
 
-
+app.use(cors({
+    origin: 'http://localhost:3000', // Frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    credentials: true // If you need to send cookies or auth headers
+}));
 //middleware for app
 app.use(express.json())
 app.use(bodyParser.json())

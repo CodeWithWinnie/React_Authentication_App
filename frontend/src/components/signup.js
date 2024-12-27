@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "../index.css";
-import { useAuth } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 const Signup = () => {
     const [username, setUserName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [repeatpassword, setrepeatPassword] = useState('')
-    const {register} = useAuth()
+    const {register} = useContext(AuthContext)
 
     const handleRegister = async() => {
          if (password !== repeatpassword) {

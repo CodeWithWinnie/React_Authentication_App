@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
-// import api from '../api/api'
+
 
 const AuthContext = createContext()
 
@@ -12,10 +12,10 @@ const AuthProvider = ({children}) => {
 
    
 
-   const register  = async (cred) => {
+ const register  = async (cred) => {
       const {data} = await axios.post(`${BKEP}/api/auth/register`, cred)
       setUser(data.result)
-      localStorage.setItem('user_id', data.result?.id)
+      localStorage.setItem('user_id', data.result.id);
       return data
       // localStorage.setItem('user_id', data.user?.user_id)
    }
@@ -27,6 +27,7 @@ const AuthProvider = ({children}) => {
       setUser(data.result)
       localStorage.setItem('user_id', data.result[0].id)
       return data
+      // localStorage.setItem('user_id', data.user?.user_id)
    }
 
    const logout = async () => {
@@ -47,5 +48,5 @@ const AuthProvider = ({children}) => {
   )
 }
 
-const useAuth = () => useContext(AuthContext)
-export {useAuth, AuthProvider}
+
+export {AuthContext, AuthProvider}
